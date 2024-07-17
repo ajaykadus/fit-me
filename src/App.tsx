@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Dashboard from './pages/dashboard';
+import { Routes, Route, Link } from 'react-router-dom';
+import TrackActivity from './pages/TrackActivity';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import Login from './pages/login';
+import Navbar from './components/Navbar';
+import Layout from './layout';
 
-function App() {
+const App = () => {
+  const { state } = useAuth();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <AuthProvider>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/trackActivity" element={<TrackActivity />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </Layout>
+      </AuthProvider>
+    </>
   );
-}
+};
 
 export default App;
