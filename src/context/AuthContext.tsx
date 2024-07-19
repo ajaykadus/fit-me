@@ -32,6 +32,11 @@ const initialState: AuthState = {
   user: null,
 };
 
+const userdata = localStorage.getItem('user');
+if (userdata) {
+  initialState.isAuthenticated = true;
+  initialState.user = JSON.parse(userdata);
+}
 // Create the Auth Context
 const AuthContext = createContext<{
   state: AuthState;
@@ -45,12 +50,14 @@ const AuthContext = createContext<{
 const authReducer = (state: AuthState, action: AuthAction): AuthState => {
   switch (action.type) {
     case LOGIN:
+      localStorage.setItem('user', JSON.stringify(action.payload));
       return {
         ...state,
         isAuthenticated: true,
         user: action.payload,
       };
     case LOGOUT:
+      localStorage.removeItem('user');
       return {
         ...state,
         isAuthenticated: false,

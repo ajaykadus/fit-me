@@ -12,6 +12,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     // Mock login function, replace with your actual login logic
     const user = { username };
+    localStorage.setItem('user', JSON.stringify(user));
     dispatch({ type: 'LOGIN', payload: user });
   };
 

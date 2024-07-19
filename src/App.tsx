@@ -4,7 +4,6 @@ import { Routes, Route, Link } from 'react-router-dom';
 import TrackActivity from './pages/TrackActivity';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Login from './pages/login';
-import Navbar from './components/Navbar';
 import Layout from './layout';
 
 const App = () => {
