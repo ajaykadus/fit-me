@@ -5,6 +5,7 @@ import TrackActivity from './pages/TrackActivity';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Login from './pages/login';
 import Layout from './layout';
+import SignupForm from './signup';
 
 const App = () => {
   const { state } = useAuth();
@@ -16,6 +17,7 @@ const App = () => {
             <Route path="/" element={<Dashboard />} />
             <Route path="/trackActivity" element={<TrackActivity />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignupForm />} />
           </Routes>
         </Layout>
       </AuthProvider>
